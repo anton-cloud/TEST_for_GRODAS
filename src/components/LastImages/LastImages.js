@@ -13,8 +13,6 @@ const LastImages = ({ lastImages }) => {
                             <div>
                                 <p>{image.title} <br />  {image.tags.map((tag) => <span key={(image.id += 1).toString()}> #{tag}</span>)}</p>
                             </div>
-
-                            {console.log(image.age)}
                         </li>))}
                 </ul>
             </LastImagesStyled>

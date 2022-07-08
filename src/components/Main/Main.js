@@ -20,8 +20,6 @@ const Main = () => {
                 setLastImages([...result].sort(
                     (firstImage, secondImage) => firstImage.age - secondImage.age
                 ).slice(0, 2))
-
-                console.log(lastImages);
             });
     }, []);
 

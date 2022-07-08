@@ -9,8 +9,8 @@ const ContainerStyled = styled.div`
   margin: 0 auto;
 
 @media screen and (min-width: 680px) {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
     max-width: 680px;
 }
 
