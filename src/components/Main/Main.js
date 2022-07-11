@@ -114,7 +114,7 @@ const Main = () => {
     // console.log(`totalElements: ${total} = ${tagsArray.length}`);
     console.groupEnd()
 
-  }, [breakPoint, firstIdx]);
+  }, [breakPoint]);
 
   return (
 
