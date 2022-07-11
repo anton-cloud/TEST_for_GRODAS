@@ -11,7 +11,9 @@ export const LastImagesStyled = styled.section`
     }   
 
     ul li {
+        position: relative;
         margin-top: 20px;
+        cursor: pointer;
     }
 
     p {
@@ -25,6 +27,23 @@ export const LastImagesStyled = styled.section`
         opacity: 0.66;
     }
 
+    div {
+        position: relative;
+        width: auto;
+    }
+
+    ul li svg {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      top: 2%;
+      left: 1%;
+      
+      padding: 1px;
+      background: rgb(249,246,246);
+      background: radial-gradient(circle, rgba(249,246,246,0.4318102240896359) 73%, rgba(0,0,0,0.1) 87%);
+    }
+
     @media screen and (min-width: 680px) {
         ul {
             margin-top: 40px;
@@ -36,6 +55,25 @@ export const LastImagesStyled = styled.section`
 
         ul li {
             margin-top: 0px;
+        }
+
+    @media screen and (min-width: 960px) {
+        h2 {
+            text-align: start;
+            font-size: 32px;
+        }
+        p {
+            font-size: 18px;
+        }
+        
+        p span {
+            font-size: 16px;
+        }
+        }
+
+        ul {
+            margin-top: 40px;
+            grid-template-columns: repeat(3, 1fr);
         }
     }
 `
