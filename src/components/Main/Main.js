@@ -8,32 +8,21 @@ const Main = () => {
   const [topRating, setTopRating] = useState(null);
   const [lastImages, setLastImages] = useState(null);
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
-  const [firstIdx, setFirstIdx] = useState(0);
-  const [secondIdx, setSecondIdx] = useState(3);
-  const [imagesArrLength, setImagesArrLength] = useState(null);
   const breakPoint = 960;
   const isDesktop = viewportWidth >= breakPoint;
 
   const handleResizeWindow = () => setViewportWidth(window.innerWidth);
 
   const handleNextClick = () => {
-    if (secondIdx + 3 > imagesArrLength) { return };
-    setFirstIdx((prev) => (prev += 1))
-    setSecondIdx((prev) => (prev += 1))
-
-
-    console.log(`firstIdx:${firstIdx}`);
-    console.log(`secondIdx:${secondIdx}`);
+    alert(`next clicked;
+    ...Функціонал каруселі реалізовувати не потрібно.(© -Тестове завдання Frontend-)
+    `)
   }
 
   const handleBackClick = () => {
-    if (firstIdx - 3 < 0) { return };
-
-    setFirstIdx((prev) => (prev -= 1))
-    setSecondIdx((prev) => (prev -= 1))
-
-    console.log(`firstIdx:${firstIdx}`);
-    console.log(`secondIdx:${secondIdx}`);
+    alert(`back clicked;
+    ...Функціонал каруселі реалізовувати не потрібно.(© -Тестове завдання Frontend-)
+    `)
   }
 
 
@@ -64,8 +53,6 @@ const Main = () => {
 
         localStorage.setItem("result", JSON.stringify(result));
 
-        setImagesArrLength(result.length)
-
         setTopRating([...result].sort(
           (firstImage, secondImage) => firstImage.rating - secondImage.rating
         ).slice(0, 3));
@@ -78,65 +65,64 @@ const Main = () => {
         ).slice(0, 5));
       }
 
-
       setLastImages([...result].sort(
         (firstImage, secondImage) => firstImage.age - secondImage.age
       ).slice(0, 2))
     }).catch((err) => console.log(err));
 
-  }, [firstIdx, secondIdx]);
+  }, []);
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   const arr = ["html", "head", "meta", "title", "script", "style", "body", "div", "header", "main", "footer", "section", "aside", "h2", "p", "ul", "li", "span", "svg", "br", "use", "img"];
-  //   //1. Визначити загальну кількість елементів у DOM-дереві.
-  //   const tagsArray = document.getElementsByTagName('*');
-  //   console.group("1. Визначити загальну кількість елементів у DOM-дереві.");
-  //   console.log(`Total number of tags in the DOM: ${tagsArray.length}`);
-  //   console.groupEnd()
+    const arr = ["html", "head", "meta", "title", "script", "style", "body", "div", "header", "main", "footer", "section", "aside", "h2", "p", "ul", "li", "span", "svg", "br", "use", "img"];
+    //1. Визначити загальну кількість елементів у DOM-дереві.
+    const tagsArray = document.getElementsByTagName('*');
+    console.group("1. Визначити загальну кількість елементів у DOM-дереві.");
+    console.log(`Total number of tags in the DOM: ${tagsArray.length}`);
+    console.groupEnd()
 
 
-  //   //2. Згрупувати елементи за назвою тегу, визначити кількість елементів для кожного тегу.
-  //   const objElements = [];
+    //2. Згрупувати елементи за назвою тегу, визначити кількість елементів для кожного тегу.
+    const objElements = [];
 
-  //   console.group("2. Згрупувати елементи за назвою тегу, визначити кількість елементів для кожного тегу.");
-  //   arr.forEach((tag) => {
+    console.group("2. Згрупувати елементи за назвою тегу, визначити кількість елементів для кожного тегу.");
+    arr.forEach((tag) => {
 
-  //     let value = document.getElementsByTagName(`${tag}`);
+      let value = document.getElementsByTagName(`${tag}`);
 
-  //     if (value.length !== 0) {
-  //       objElements.push({ tag: tag, amountElements: value.length, })
-  //     }
-  //   })
-  //   console.table(objElements);
-  //   console.groupEnd();
+      if (value.length !== 0) {
+        objElements.push({ tag: tag, amountElements: value.length, })
+      }
+    })
+    console.table(objElements);
+    console.groupEnd();
 
-  //   //3. Згрупувати елементи за кількістю символів у назві тегу, визначити кількість елементів.
-  //   const objAscendingOrder = [];
-  //   let total = 0;
+    //3. Згрупувати елементи за кількістю символів у назві тегу, визначити кількість елементів.
+    const objAscendingOrder = [];
+    let total = 0;
 
-  //   [...arr].sort((a, b) => a.length - b.length).forEach((tag) => {
+    [...arr].sort((a, b) => a.length - b.length).forEach((tag) => {
 
-  //     let value = document.getElementsByTagName(`${tag}`);
-  //     if (value.length !== 0) {
-  //       objAscendingOrder.push({
-  //         tag: tag,
-  //         amountElements: value.length,
-  //         tagWordsLength
-  //           : tag.length
-  //       })
-  //       total += value.length;
-  //     }
-  //   })
+      let value = document.getElementsByTagName(`${tag}`);
+      if (value.length !== 0) {
+        objAscendingOrder.push({
+          tag: tag,
+          amountElements: value.length,
+          tagWordsLength
+            : tag.length
+        })
+        total += value.length;
+      }
+    })
 
-  //   console.group("3. Згрупувати елементи за кількістю символів у назві тегу, визначити кількість елементів.");
-  //   console.table(objAscendingOrder);
-  //   console.log(`totalElements: ${total}`);
-  //   //**for check 
-  //   // console.log(`totalElements: ${ total } = ${ tagsArray.length }`);
-  //   console.groupEnd()
+    console.group("3. Згрупувати елементи за кількістю символів у назві тегу, визначити кількість елементів.");
+    console.table(objAscendingOrder);
+    console.log(`totalElements: ${total}`);
+    //**for check 
+    // console.log(`totalElements: ${ total } = ${ tagsArray.length }`);
+    console.groupEnd()
 
-  // });
+  });
 
   return (
 
