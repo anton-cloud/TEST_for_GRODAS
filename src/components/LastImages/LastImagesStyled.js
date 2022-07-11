@@ -58,6 +58,11 @@ export const LastImagesStyled = styled.section`
         }
 
     @media screen and (min-width: 960px) {
+        ul {
+            margin-top: 40px;
+            grid-template-columns: repeat(3, 1fr);
+        } 
+        
         h2 {
             text-align: start;
             font-size: 32px;
@@ -69,11 +74,6 @@ export const LastImagesStyled = styled.section`
         p span {
             font-size: 16px;
         }
-        }
-
-        ul {
-            margin-top: 40px;
-            grid-template-columns: repeat(3, 1fr);
         }
     }
 `
