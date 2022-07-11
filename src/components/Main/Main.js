@@ -18,7 +18,6 @@ const Main = () => {
 
   const handleNextClick = () => {
     if (secondIdx + 3 > imagesArrLength) { return };
-
     setFirstIdx((prev) => (prev += 3))
     setSecondIdx((prev) => (prev += 3))
   }
@@ -30,39 +29,51 @@ const Main = () => {
     setSecondIdx((prev) => (prev -= 3))
   }
 
+
   useEffect(() => {
     window.addEventListener("resize", handleResizeWindow);
   }, []);
 
   useEffect(() => {
-
     const port = process.env.PORT || 3000;
-    const ferchData = async () => fetch(`http://localhost:${port}/data.json`)
-
-    ferchData().then((response) => response.json())
-      .then((result) => {
-
-        if (isDesktop) {
-
-          setImagesArrLength(result.length)
-
-          setTopRating([...result].sort(
-            (firstImage, secondImage) => firstImage.rating - secondImage.rating
-          ).slice(firstIdx, secondIdx));
+    const fetchData = async () => {
+      const req = await fetch(`http://localhost:${port}/TEST_for_GRODAS/data.json`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         }
+      });
+      return req.json();
 
-        if (!isDesktop) {
-          setTopRating([...result].sort(
-            (firstImage, secondImage) => firstImage.rating - secondImage.rating
-          ).slice(0, 5));
-        }
+    }
+
+    fetchData().then((result) => {
+
+      if (isDesktop) {
+
+        localStorage.setItem("result", JSON.stringify(result));
+
+        setImagesArrLength(result.length)
+
+        setTopRating([...result].sort(
+          (firstImage, secondImage) => firstImage.rating - secondImage.rating
+        ).slice(firstIdx, secondIdx));
+      }
+
+      if (!isDesktop) {
+
+        setTopRating([...result].sort(
+          (firstImage, secondImage) => firstImage.rating - secondImage.rating
+        ).slice(0, 5));
+      }
 
 
-        setLastImages([...result].sort(
-          (firstImage, secondImage) => firstImage.age - secondImage.age
-        ).slice(0, 2))
-      }).catch((err) => alert(err));
-  }, []);
+      setLastImages([...result].sort(
+        (firstImage, secondImage) => firstImage.age - secondImage.age
+      ).slice(0, 2))
+    }).catch((err) => console.log(err));
+
+  }, [firstIdx, secondIdx]);
 
   useEffect(() => {
 
@@ -111,7 +122,7 @@ const Main = () => {
     console.table(objAscendingOrder);
     console.log(`totalElements: ${total}`);
     //**for check 
-    // console.log(`totalElements: ${total} = ${tagsArray.length}`);
+    // console.log(`totalElements: ${ total } = ${ tagsArray.length }`);
     console.groupEnd()
 
   });

@@ -7,7 +7,7 @@ const FuaturedImagesItem = ({ image, sprite }) => {
 
     return (
         <li >
-            < img src={image.image} alt={image.title} />
+            < img src={`/TEST_for_GRODAS/${image.image}`} alt={image.title} />
             <div>
                 <p>{image.title} <br />  {image.tags.map((tag) => <span key={(image.id += 1).toString()}> #{tag}</span>)}</p>
 
