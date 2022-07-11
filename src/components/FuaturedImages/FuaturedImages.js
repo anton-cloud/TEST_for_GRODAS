@@ -1,26 +1,29 @@
-import { FuaturedImagesStyled } from "./FuaturedImagesStyles";
+import { FuaturedImagesStyled } from "./FuaturedImagesStyled";
 import Container from "../Container"
+import sprite from "../../icons/sprite.svg"
+import FuaturedImagesList from "./FuaturedImagesList";
 
-const FuaturedImages = ({ topRating }) => {
 
-    return (
-        <Container>
-            <FuaturedImagesStyled>
-                <h2>Fuatured Images</h2>
-                <ul>
-                    {topRating?.map((image) => (
-                        <li key={image.id.toString()}>
-                            < img src={image.image} alt={image.title} />
-                            <div>
-                                <p>{image.title} <br />  {image.tags.map((tag) => <span key={(image.id += 1).toString()}> #{tag}</span>)}</p>
-                                
-                            </div>
-                        </li>))}
+const FuaturedImages = ({ topRating, isDesktop, handleNextClick, handleBackClick }) => {
 
-                </ul>
-            </FuaturedImagesStyled >
-        </Container>
-    );
+  return (
+    <Container>
+      <FuaturedImagesStyled>
+        <h2>Fuatured Images</h2>
+        <FuaturedImagesList topRating={topRating} sprite={sprite} />
+        {isDesktop &&
+          <>
+            <svg className="arrow arrow__back" onClick={handleBackClick}>
+              <use href={sprite + "#icon-back"} />
+            </svg>
+            <svg className="arrow arrow__next" onClick={handleNextClick}>
+              <use href={sprite + "#icon-next"} />
+            </svg>
+          </>
+        }
+      </FuaturedImagesStyled >
+    </Container>
+  );
 }
 
 export default FuaturedImages;
