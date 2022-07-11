@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/TEST_for_GRODAS/static/css/main.d299c703.css",
-    "main.js": "/TEST_for_GRODAS/static/js/main.06da2937.js",
+    "main.js": "/TEST_for_GRODAS/static/js/main.9a242839.js",
     "static/media/sprite.svg": "/TEST_for_GRODAS/static/media/sprite.326f7f16d80ed9b351e01cec9b81f647.svg",
     "index.html": "/TEST_for_GRODAS/index.html",
     "main.d299c703.css.map": "/TEST_for_GRODAS/static/css/main.d299c703.css.map",
-    "main.06da2937.js.map": "/TEST_for_GRODAS/static/js/main.06da2937.js.map"
+    "main.9a242839.js.map": "/TEST_for_GRODAS/static/js/main.9a242839.js.map"
   },
   "entrypoints": [
     "static/css/main.d299c703.css",
-    "static/js/main.06da2937.js"
+    "static/js/main.9a242839.js"
   ]
 }
